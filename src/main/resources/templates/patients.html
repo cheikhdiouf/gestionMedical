@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultrap.net.nez/thymeleaf/layout"
+layout:decorator="templete1" 
+ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"/>
+<head>
+<meta charset="utf-8">
+<title>Patient</title>
+</head>
+<body>
+
+<div layout:fragment="contenu">
+<div class="container mt-0">
+	<div class="card text-center">
+		<div class="card-header">liste des patients</div>
+		<div class="card-boy">
+		
+		<form th:action="@{patients}" method="get">
+		<div class="form-group">
+		<label>Name</label>
+		<input type="text" name="mot" th:value="${mot}">
+		<button class="btn btn-info">chercher</button>
+		</div>
+		
+		</form>
+		
+		<table class="table table-striped">
+		<tr>
+			<th>ID</th>
+			<th>Nom</th>
+			<th>Prenom</th>
+				<th>Email</th>
+			<th>DateNaissance</th>
+			
+			<th sec:authorize="hasRole('ROLE_ADMIN')"> Action</th>
+		 </tr>
+		<tr th:each="p:${patients}">
+			<td th:text="${p.id}"></td>
+			<td th:text="${p.name}"></td>
+			<td th:text="${p.prenom}"></td>
+			<td th:text="${p.email}"></td>
+			<td th:text="${p.dateNaissance}"> </td>
+			
+			
+			<td  sec:authorize="hasRole('ROLE_ADMIN')">
+			<a onclick="return confirm('etes vs sure de vouloir supprime ce patient')" class="btn btn-danger" th:href="@{deletePatient(id=${p.id})}"> Delete</a> 
+			<a class="btn btn-success" th:href="@{editePatient(id=${p.id})}" > Edite</a> 
+			</td>
+		</tr>
+	</table>
+	<ul class="nav nav-pills">
+	<li th:each="page,status:${pages}"> 
+	<a  th:class="${status.index==currentPage?'btn btn-primary':'btn'}" 
+	th:href="@{patients(page=${status.index},mot=${mot})}"  th:text="${status.index}"></a>
+	</li>
+	</ul>
+		</div>
+	</div>
+</div>	
+
+</div>
+</body>
+</html>

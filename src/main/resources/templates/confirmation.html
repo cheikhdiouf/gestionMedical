@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultrap.net.nez/thymeleaf/layout"
+ layout:decorator="templete1" />
+<head>
+<meta charset="utf-8">
+<title> Formulaire d'un Patient</title>
+<style >
+.form-control{
+width:400px;
+}
+.form-group
+{margin-left:230px;
+}
+</style>
+</head>
+<body>
+<div layout:fragment="contenu">
+<div class="container">
+<div class="card " style="width:1000px">
+<div class="card-header text-center" > 
+votre client a ete enregistre avec success
+</div>
+<div class="card-body ">
+<div class="form-group">
+<label> Id :</label>
+<strong><label th:text="${patient.id}"> </label> </strong>
+</div>
+<div class="form-group">
+<label> Nom :</label>
+<strong><label th:text="${patient.name}"></label> </strong>
+</div>
+<div class="form-group">
+<label> email :</label>
+<strong><label th:text="${patient.email}"></label></strong>
+</div>
+<div class="form-group">
+<label> dateNaissance :</label>
+<strong><label th:text="${patient.dateNaissance}"></label></strong>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

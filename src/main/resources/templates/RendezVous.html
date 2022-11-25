@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultrap.net.nez/thymeleaf/layout"
+layout:decorator="templete1"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"/>
+<head>
+<meta charset="utf-8">
+<title>Patient</title>
+</head>
+<body>
+
+	<div layout:fragment="contenu">
+		<div class="container mt-0">
+			<div class="card text-center">
+				<div class="card-header">Fichier du RendezVous</div>
+				<div class="card-boy">
+
+					<table class="table table-striped">
+						<tr>
+							<th>ID</th>
+							<th>Patient</th>
+							<th>DateRendezVous</th>
+							<th>Medecine</th>
+							<th>Consultation</th>
+						</tr>
+						<tr th:each="p:${Rendez}">
+							<td th:text="${p.id}"></td>
+							<td th:text="${p.dateRendezVous}"></td>
+							<td th:text="${p.prenom}"></td>
+							<td th:text="${p.email}"></td>
+							<td th:text="${p.dateNaissance}"></td>
+
+						</tr>
+					</table>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultrap.net.nez/thymeleaf/layout"
+layout:decorator="templete1" />
+<head>
+<meta charset="ISO-8859-1">
+<title>Consulation</title>
+<style>
+.form-control{
+width:400px;
+}
+.form-group
+{margin-left:230px;
+}
+ </style>
+
+</head>
+<body>
+<div layout:fragment="contenu">
+<form  th:action="@{saveConsultation}"  method="POST">
+<div class="container">
+<div class="card">
+<div class="form-group">
+<label class="control-label">DateConsultation:</label>
+<input type="date" class="form-control" name="dateConsultation"  th:value="${consultation.dateConsultation}">
+</div>
+
+<div class="form-group">
+<label class="control-label">RapportConsultation:</label>
+<input type="text" class="form-control" name="rapportConsultation" th:value="${consultation.rapportConsultation}" >
+</div>
+<div class="form-group">
+<label class="control-label"> PrixConslttation:</label>
+<input type="text" class="form-control" name=" prixConsultation" th:value="${consultation.prixConsultation}">
+</div>
+
+
+<div class="form-group">
+<button class="btn btn-primary"> save</button>
+</div>
+</div>
+</div>
+</form>
+
+</div>
+
+</body>
+</html>

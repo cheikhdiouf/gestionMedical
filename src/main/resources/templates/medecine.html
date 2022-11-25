@@ -1,0 +1,40 @@
+	<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultrap.net.nez/thymeleaf/layout"
+layout:decorator="templete1" 
+ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"/>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div layout:fragment="contenu">
+<div class="container mt-1">
+<div class="card text-center">
+		<div class="card-header">liste des Medecines</div>
+		<div class="card-boy">
+<form >
+<table class="table table-striped">
+<tr>
+<th>Id</th><th>Nom</th><th>Specialite</th><th>Email</th><th>Action</th>
+</tr>
+
+
+ <tr th:each="p:${medecine}">
+			<td th:text="${p.id}"></td>
+			<td th:text="${p.nom}"></td>
+			<td th:text="${p.email}"></td>
+			<td th:text="${p.specialite}"></td>
+	
+<td ><a onclick="return confirm('etes vs sure de vouloir supprime ce medecin')" class="btn btn-danger" 
+th:href="@{deleteMedecine(id=${p.id})}"> Delete</a> 
+<a class="btn btn-success" th:href="@{editeMdecine(id=${p.id})}"> Edite</a> 
+</td>		
+			
+</tr>
+</table>
+</form></div></div>
+</div>
+</div>
+</body>
+</html>

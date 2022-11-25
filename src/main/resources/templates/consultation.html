@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultrap.net.nez/thymeleaf/layout"
+ layout:decorator="templete1" 
+ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"/>
+<head>
+<meta charset="ISO-8859-1">
+<title>Consultation</title>
+</head>
+<body>
+<div layout:fragment="contenu">
+<div class="container mt-1">
+<div class="card text-center">
+		<div class="card-header">liste des Medecines</div>
+		<div class="card-boy">
+<form >
+<table class="table table-striped">
+<tr>
+<th>Id</th><th>DateConsltation</th><th>RapportConsultation</th><th>PrixConsultation</th><th>Action</th>
+</tr>
+
+<tr th:each="p:${consultation}">
+			<td th:text="${p.id}"></td>
+			<td th:text="${p.dateConsultation}"></td>
+			<td th:text="${p.rapportConsultation}"></td>
+			<td th:text="${p.prixConsultation}"></td>
+</tr>
+
+</table>
+</form></div></div>
+</div>
+</div>
+</body>
+</html>
